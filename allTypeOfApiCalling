@@ -1,0 +1,186 @@
+import httpClient from '../utils/httpClient';
+import { PLAYER_SERVICE_BASE_URL } from '../config';
+
+const addPlayerToken = async (payload) => {
+  try {
+    const response = await httpClient.post(`${PLAYER_SERVICE_BASE_URL}/players/token`, payload, {
+      headers: {
+        // Authorization: `Bearer ${userToken?.token || ""}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const updatePlayerToken = async (playerId, payload) => {
+  try {
+    const response = await httpClient.put(`${PLAYER_SERVICE_BASE_URL}/players/token/${playerId}`, payload, {
+      headers: {
+        // Authorization: `Bearer ${userToken?.token || ""}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getAllPlayerCounters = async () => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/token`);
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+const getAllPcoTrackers = async () => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/offering`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getAllMarketTrackers = async () => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/secondary-market`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const addPlayerTokenMinted = async (id, address) => {
+  try {
+    const response = await httpClient.patch(
+      `${PLAYER_SERVICE_BASE_URL}/players/token/mintPlayerToken/${id}?houseAddress=${address}`,
+      {
+        headers: {
+          // Authorization: `Bearer ${userToken?.token || ""}`,
+        },
+      }
+    );
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getPlayerCounter = async (id) => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/token/${id}`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const updatePcoStatus = async (id, status) => {
+  try {
+    const response = await httpClient.patch(
+      `${PLAYER_SERVICE_BASE_URL}/players/offering/status/${id}?status=${status}`
+    );
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getCompletePco = async (id) => {
+  try {
+    const response = await httpClient.patch(`${PLAYER_SERVICE_BASE_URL}/players/offering/status-completed/${id}`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const addPlayerCounterOffering = async (payload) => {
+  try {
+    const response = await httpClient.post(`${PLAYER_SERVICE_BASE_URL}/players/offering`, payload, {
+      headers: {
+        // Authorization: `Bearer ${userToken?.token || ""}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const updatePlayerCounterOffering = async (id, payload) => {
+  try {
+    const response = await httpClient.put(`${PLAYER_SERVICE_BASE_URL}/players/offering/${id}`, payload, {
+      headers: {
+        // Authorization: `Bearer ${userToken?.token || ""}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getPlayerCounterOffering = async (id) => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/offering/${id}`, {
+      headers: {
+        // Authorization: `Bearer ${userToken?.token || ""}`,
+      },
+    });
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getMinitedPlayerCounter = async () => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/token/mintedPlayerToken`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+const getAllCompletedPlayerCounter = async () => {
+  try {
+    const response = await httpClient.get(`${PLAYER_SERVICE_BASE_URL}/players/token/completedPlayerToken`);
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+};
+
+export {
+  updatePcoStatus,
+  addPlayerToken,
+  getAllPlayerCounters,
+  getAllPcoTrackers,
+  getAllMarketTrackers,
+  addPlayerTokenMinted,
+  getPlayerCounter,
+  updatePlayerToken,
+  getCompletePco,
+  addPlayerCounterOffering,
+  getMinitedPlayerCounter,
+  getPlayerCounterOffering,
+  updatePlayerCounterOffering,
+  getAllCompletedPlayerCounter,
+};
